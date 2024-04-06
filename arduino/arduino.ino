@@ -25,7 +25,7 @@ void loop() {
   // myservo.write(100);
 
   // Проверяем, есть ли данные из Serial порта
-  if (Serial.available() > 0) {
+  if (Serial.available() == 1) {
     // Читаем полученные данные и сохраняем их в переменной
     String receivedData = Serial.readString();
 
@@ -34,7 +34,16 @@ void loop() {
       myservo.write(i);
       delay(15);
     }
-    //delay(5000); 
+
+    // if (Serial.available() == 2) {
+    // Читаем полученные данные и сохраняем их в переменной
+    // String receivedData = Serial.readString();
+
+//Складываем плечики вешалки
+    // for (int i = 100; i <= 170; i++) {   
+    //   myservo.write(i);
+    //   delay(15);
+
     // Отправляем ответ обратно в Serial порт
     //Serial.println(receivedData);
     

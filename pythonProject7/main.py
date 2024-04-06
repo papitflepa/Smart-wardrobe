@@ -13,7 +13,19 @@ print(message.payload.decode())
 
 #Если пришло сообщение, отправляем сигнал к ардуино
 if message.payload.decode() == '1':
-    print("!!!!")
+    print("футболка 1")
+    arduino.write(b'message.payload.encode()')
+    time.sleep(1)
+
+    # Считываем строку с Arduino
+    data = arduino.readline().decode('utf-8').strip()
+    # Выводим текущие показания
+    print(data)
+    print('футболка получена')
+
+#Если пришло сообщение, отправляем сигнал к ардуино
+if message.payload.decode() == '2':
+    print("футболка 2")
     arduino.write(b'message.payload.encode()')
     time.sleep(1)
 

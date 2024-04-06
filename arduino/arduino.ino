@@ -12,7 +12,7 @@ void setup() {
   Serial.println(pos);
   delay(300);
   
-
+//Возвращаем плечи вешалки в начальное положение
   for (int i = pos; i <= 100; i++) {   
     myservo.write(i);
     delay(150);
@@ -29,6 +29,7 @@ void loop() {
     // Читаем полученные данные и сохраняем их в переменной
     String receivedData = Serial.readString();
 
+//Складываем плечики вешалки
     for (int i = 100; i <= 170; i++) {   
       myservo.write(i);
       delay(15);

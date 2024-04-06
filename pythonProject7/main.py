@@ -2,13 +2,16 @@ import time
 import serial.tools.list_ports
 from paho.mqtt.subscribe import simple
 
+#Связь с ардуино уно
 arduino=serial.Serial('COM3',9600)
 
+#Связь пайтона с управлением
 message=simple('maker/#',hostname='95.163.230.191',port=1883,auth={'username':'maker','password':'LABmaker123'})
 
+#Выводим возможное сообщение
 print(message.payload.decode())
 
-# while True:
+#Если пришло сообщение, отправляем сигнал к ардуино
 if message.payload.decode() == '1':
     print("!!!!")
     arduino.write(b'message.payload.encode()')
@@ -18,14 +21,7 @@ if message.payload.decode() == '1':
     data = arduino.readline().decode('utf-8').strip()
     # Выводим текущие показания
     print(data)
-# line = arduino.readline().decode()
-# print(line)
     print('футболка получена')
-
-    # elif message.payload.decode() == '2':
-    #     print('розовая футболка')
-    # else:
-    #     print('нет нужной футболки')
 
 
 
